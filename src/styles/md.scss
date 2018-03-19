@@ -7,13 +7,13 @@ $mat-primary: mat-palette($mat-deep-purple, 600);
 $mat-accent:  mat-palette($mat-lime, 100);
 $mat-warn:    mat-palette($mat-red);
 
-$mat-theme: mat-dark-theme($mat-primary, $mat-accent, $mat-warn);
+$mat-theme: mat-light-theme($mat-primary, $mat-accent, $mat-warn);
 @include angular-material-theme($mat-theme);
 
 $alt-primary: mat-palette($mat-yellow);
 $alt-accent:  mat-palette($mat-grey, 200);
 
-$alt-theme: mat-dark-theme($alt-primary, $alt-accent);
+$alt-theme: mat-light-theme($alt-primary, $alt-accent);
 
 .alternative {
     @include angular-material-theme($alt-theme);
