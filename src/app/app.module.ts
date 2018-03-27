@@ -6,14 +6,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatModule} from './mat.module';
 
 import { AppComponent } from './app.component';
-import  { PageOne} from './app.pageone';
-
+import {ConnectPageModule} from './connect-page/connect-page.module'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageOne,
+    ConnectPageModule,
   ],
   imports: [
     BrowserModule,

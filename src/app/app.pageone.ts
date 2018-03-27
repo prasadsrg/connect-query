@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as jsonfile from 'jsonfile';
+import * as jsonfile from 'fs';
 
 @Component({
     selector: 'page-one',
@@ -10,7 +10,7 @@ export class PageOne {
     databases = ['MySql','Teradata'];
     onSubmit(value:any)
     {
-        console.log(value);
+        console.log(jsonfile);
         var file = '/assets/access.connection.json';
         jsonfile.writeFileSync(file,value, {flag:'a'});
     }
