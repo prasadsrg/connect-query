@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ConnectComponent } from './connect/connect.component';
 import { ConnectPageService } from './connect/connect-page.service';
-import { MatModule } from '../mat.module';
+
 import { CreateConnectionComponent } from '../connect-page/create-connection/create-connection.component';
 
+import { MatModule } from '../mat.module';
 const routes: Routes = [
   { path: '', component: ConnectComponent}
 

@@ -7,7 +7,8 @@ import { MatModule} from './mat.module';
 
 import { AppComponent } from './app.component';
 import {ConnectPageModule} from './connect-page/connect-page.module'
-
+import {QueryModule} from './query/query.module'
+import {MysqlConnectionService} from './common/mysql-connection.service'
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import {ConnectPageModule} from './connect-page/connect-page.module'
     BrowserModule,
     BrowserAnimationsModule,
     MatModule,
-    ConnectPageModule
+    ConnectPageModule,
+    QueryModule
   ],
-  providers: [],
+  providers: [MysqlConnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
