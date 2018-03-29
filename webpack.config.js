@@ -517,6 +517,7 @@ module.exports = {
     "path": "require('path')",
     "tls": "require('tls')",
     "net": "require('net')",
-    "jsonfile": "require('jsonfile')"
+    "jsonfile": "require('jsonfile')",
+    "mysql": "require('mysql')"
  }
 };
