@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ConnectComponent } from './connect/connect.component';
 import { ConnectPageService } from './connect/connect-page.service';
+import { MatModule } from '../mat.module';
+import { CreateConnectionComponent } from '../connect-page/create-connection/create-connection.component';
 
 const routes: Routes = [
   { path: '', component: ConnectComponent}
@@ -13,8 +15,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes, { useHash: true }),
+    MatModule
   ],
-  declarations: [ConnectComponent],
+  declarations: [ConnectComponent, CreateConnectionComponent],
   exports: [RouterModule],
   providers:[ConnectPageService]
 })

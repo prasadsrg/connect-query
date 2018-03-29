@@ -516,6 +516,7 @@ module.exports = {
     "fs": "require('fs')",
     "path": "require('path')",
     "tls": "require('tls')",
-    "net": "require('net')"
+    "net": "require('net')",
+    "jsonfile": "require('jsonfile')"
  }
 };

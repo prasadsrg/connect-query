@@ -12,12 +12,12 @@ import {ConnectPageModule} from './connect-page/connect-page.module'
 @NgModule({
   declarations: [
     AppComponent,
-    ConnectPageModule,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatModule
+    MatModule,
+    ConnectPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

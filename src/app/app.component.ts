@@ -10,6 +10,5 @@ import * as fs from 'fs';
 export class AppComponent {
   title = 'app';
   constructor() {
-    console.log(fs);
   }
 }
