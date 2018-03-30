@@ -10,7 +10,8 @@ export class QueryService {
 
    getTables(callback){
     this.mysqlConnectionService.get( (err, conn) =>{
-      conn.query('SHOW TABLES', (err, rows) => {
+      if(err) throw err;
+      conn.query("SHOW TABLES;", (err, rows) => {
               if(err)  throw err;
               callback(rows) 
       });

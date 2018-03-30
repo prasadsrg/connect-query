@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ConnectComponent } from './connect/connect.component';
 import { ConnectPageService } from './connect/connect-page.service';
 
-import { CreateConnectionComponent } from '../connect-page/create-connection/create-connection.component';
+//import { CreateConnectionComponent } from '../connect-page/create-connection/create-connection.component';
 
 import { MatModule } from '../mat.module';
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { useHash: true }),
     MatModule
   ],
-  declarations: [ConnectComponent, CreateConnectionComponent],
+  declarations: [ConnectComponent],
   exports: [RouterModule],
   providers:[ConnectPageService]
 })
