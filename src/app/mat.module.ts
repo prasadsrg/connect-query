@@ -9,11 +9,11 @@ MatExpansionModule} from '@angular/material';
 @NgModule({
   imports: [
        MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatInputModule, MatSelectModule, 
-       FlexLayoutModule, FormsModule, MatExpansionModule
-    ],
+       FlexLayoutModule, FormsModule, MatExpansionModule,
+          ],
   exports: [
     MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatInputModule, MatSelectModule, 
-    FlexLayoutModule,FormsModule, MatExpansionModule
-  ],
+    FlexLayoutModule,FormsModule, MatExpansionModule,
+    ],
 })
 export class MatModule { }
