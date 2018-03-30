@@ -11,10 +11,11 @@ export class QueryService {
    getTables(callback){
     this.mysqlConnectionService.get( (err, conn) =>{
       if(err) throw err;
-      conn.query("SHOW TABLES;", (err, rows) => {
+      var query= conn.query("show tables", (err, rows) => {
               if(err)  throw err;
-              callback(rows) 
+              callback(JSON.parse(JSON.stringify(rows))) 
       });
+      console.log(query.sql);
     });
    }
 

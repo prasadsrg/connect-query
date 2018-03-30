@@ -7,7 +7,7 @@ import { QueryService } from '../query.service';
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit{
-  private tables: any = [];
+  public tables: any = [];
   constructor(private query_service: QueryService) {
 
   }
@@ -15,11 +15,11 @@ export class TablesComponent implements OnInit{
     this.getTables();
   }
   getTables(){
-    this.query_service.getTables((err,data) =>{
-      if(err) throw err;
+    this.query_service.getTables((data) =>{
+      console.log(data);
       this.tables = data;
     });
-    console.log(this.tables);
+    
   }
 
 }

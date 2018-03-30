@@ -515,9 +515,7 @@ module.exports = {
     "child_process": "require('child_process')",
     "fs": "require('fs')",
     "path": "require('path')",
-    "tls": "require('tls')",
     "net": "require('net')",
-    "jsonfile": "require('jsonfile')",
     "mysql": "require('mysql')"
  }
 };
