@@ -1,0 +1,32 @@
+.main-container {
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    left:auto;
+    width:300px;
+    background-color: lightslategrey;
+}
+.ex-container {
+    position: relative;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+.input-elements {
+    top:0;
+    bottom:0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.database-card {
+    width: 20%;
+    background-color: orange;
+    margin-bottom: 20px;
+}

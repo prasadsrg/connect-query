@@ -1,0 +1,13 @@
+<mat-sidenav-container class="main-container">
+  <mat-sidenav #sidenav [mode] = "side" position = "start" opened = "true" disableClose="true" fxLayout="row wrap" style="background-color:orange;">
+<div *ngFor = "let table of tables" class = "small-container">
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          {{table[0]}}
+        </mat-expansion-panel-header>
+    
+      </mat-expansion-panel>
+
+</div>
+</mat-sidenav>
+</mat-sidenav-container>
