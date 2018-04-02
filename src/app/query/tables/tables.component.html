@@ -1,13 +1,17 @@
 <mat-sidenav-container class="main-container">
-  <mat-sidenav #sidenav [mode] = "side" position = "start" opened = "true" disableClose="true" fxLayout="row wrap" style="background-color:orange;">
-<div *ngFor = "let table of tables" class = "small-container">
-    <mat-expansion-panel >
-        <mat-expansion-panel-header>
-          {{table[0]}}
-        </mat-expansion-panel-header>
+  <mat-sidenav #sidenav [mode] = "side" opened = "true" disableClose="true" fxLayout="column wrap" style="background-color:orange;">
     
+    <mat-expansion-panel fxFill class = "small-container">
+        <mat-expansion-panel-header>
+          Tables
+        </mat-expansion-panel-header>
+        <div *ngFor = "let table of tables" class = "small-container">
+          {{table.table_name}}
+        </div>
       </mat-expansion-panel>
 
-</div>
 </mat-sidenav>
 </mat-sidenav-container>
+<div style="float:right;">
+  <button mat-raised-button (click) = "switchToConnect()">Back</button>
+</div>

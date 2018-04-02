@@ -8,7 +8,8 @@ import { ConnectPageService } from './connect/connect-page.service';
 
 import { MatModule } from '../mat.module';
 const routes: Routes = [
-  { path: '', component: ConnectComponent}
+  { path: '', component: ConnectComponent},
+  { path: 'connect', component: ConnectComponent}
 
 ];
 
