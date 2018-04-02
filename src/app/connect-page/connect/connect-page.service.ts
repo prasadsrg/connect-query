@@ -7,6 +7,7 @@ export class ConnectPageService {
 
   constructor() { }
   databases = ['Teradata','Mysql'];
+  database_card: any;
 
   AppendToJSONFile(value:any) {
     //var json = JSON.stringify(value);
@@ -15,6 +16,12 @@ export class ConnectPageService {
   }
   ReadFromJSONFile(): any {
      return fs.readFileSync('./src/assets/connect-page.json','utf8');
+  }
+  setCard(card:any){
+    this.database_card = card;
+  }
+  getCard(){
+    return this.database_card;
   }
   // establishConnection(database_card:any) {
   //   let connection = mysql.createPool({

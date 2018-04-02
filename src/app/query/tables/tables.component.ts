@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tables',
@@ -8,7 +9,7 @@ import { QueryService } from '../query.service';
 })
 export class TablesComponent implements OnInit{
   public tables: any = [];
-  constructor(private query_service: QueryService) {
+  constructor(private query_service: QueryService, private router: Router) {
 
   }
   ngOnInit(){
@@ -20,6 +21,9 @@ export class TablesComponent implements OnInit{
       this.tables = data;
     });
     
+  }
+  switchToConnect(){
+    this.router.navigate(['connect']);
   }
 
 }
