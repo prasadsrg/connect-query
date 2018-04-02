@@ -8,8 +8,8 @@ import { QueryGridComponent } from './query-grid/query-grid.component';
 import { QueryInfoComponent } from './query-info/query-info.component';
 import { QueryResultsComponent } from './query-results/query-results.component';
 import { QueryService } from './query.service';
-
-
+import { InfiniteListComponent} from '../shared/components/infinite-list.component';
+import { RespTableComponent } from '../shared/components/resp-table.component';
 import { MatModule } from '../mat.module';
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
@@ -26,6 +26,8 @@ const routes: Routes = [
 
   providers:[QueryService],
   exports: [RouterModule],
-  declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent, StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent]
+  declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
+     StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,
+     InfiniteListComponent, RespTableComponent]
 })
 export class QueryModule { }

@@ -4,7 +4,6 @@ import { ConnectPageService } from '../connect-page/connect/connect-page.service
 
 @Injectable()
 export class QueryService {
-  private q:any;
   database_card: any;
   constructor(private mysqlConnectionService: MysqlConnectionService, private connectService: ConnectPageService) {
     
@@ -15,14 +14,25 @@ export class QueryService {
     this.mysqlConnectionService.get( (err, conn) =>{
     var str;
     str = this.database_card.schema;
-    this.q = "SELECT table_name FROM information_schema.tables WHERE table_schema='"+str+"'";
+     let q = "SELECT table_name FROM information_schema.tables WHERE table_schema='"+str+"'";
       if(err) throw err;
-      var query= conn.query(this.q, (err, rows) => {
+      var query= conn.query(q, (err, rows) => {
               if(err)  throw err;
               callback(JSON.parse(JSON.stringify(rows))) 
       });
       console.log(query.sql);
     });
+   }
+
+   executeQuery(queryText, callback){
+    this.mysqlConnectionService.get( (err, conn) =>{
+        if(err) throw err;
+        var query= conn.query(queryText, (err, rows, fields) => {
+                if(err)  throw err;
+                callback(JSON.parse(JSON.stringify(rows)), fields) 
+        });
+        console.log(query.sql);
+      });
    }
 
 }

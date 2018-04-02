@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import {QueryService} from '../query.service';
+import { query } from '@angular/animations';
+import { $ } from 'protractor';
 @Component({
   selector: 'app-query-layout',
   templateUrl: './query-layout.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QueryLayoutComponent implements OnInit {
 
-  constructor() { }
+  private query: string;
+  constructor(private queryService: QueryService) { }
 
   ngOnInit() {
   }
-
+  executeQuery($event: any){
+    this.query = $event;
+  }
 }
