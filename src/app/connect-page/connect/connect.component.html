@@ -1,26 +1,30 @@
-<mat-sidenav-container class="main-container">
+
+
+<mat-sidenav-container class="main-container" fxFill>
   
-  <mat-sidenav #sidenav [mode] = "side" align="end" fxLayout="row wrap" style="background-color:orange;">
+  <mat-sidenav #sidenav [mode] = "side" align="end" fxLayout="row wrap" style="background-color:orange; padding: 1rem; max-width:300px">
     
     <h2>Database Information</h2><br>
 
     
-    <form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <form #userForm = "ngForm" >
 
           <div fxLayout="row wrap" fxLayoutGap="10px">
       <mat-form-field class="input-elements" fxFill>
 
-        <input matInput class = "form-control" name="name" ngModel>
+        <input matInput  name="name" ngModel>
         <mat-placeholder>Name</mat-placeholder>
 
       </mat-form-field>
 
       <mat-form-field class="input-elements" fxFill>
-
-        <mat-select placeholder = "Database Type" name="type" ngModel>
-
-          <mat-option *ngFor = "let database of databases" [value]="database">{{database}}</mat-option>
-
+        <mat-placeholder>Database Type</mat-placeholder>
+        <mat-select  name="type" ngModel>
+          <mat-option 
+            *ngFor = "let database of databases" 
+            [value]="database">
+            {{database}}
+          </mat-option>
         </mat-select>
 
   </mat-form-field>
@@ -54,32 +58,36 @@
 
   <mat-form-field class="input-elements" fxFill>
           
-      <input matInput placeholder="Initial Schema" class = "form-control" name="schema" ngModel>
+      <input matInput placeholder="Schema" class = "form-control" name="schema" ngModel>
             
   </mat-form-field>
 
-  <button type = "submit" mat-raised-button>Submit</button>
-  
+  <button mat-raised-button color="primary" (click)="onSubmit(userForm.value)">Submit</button>
+  <button mat-raised-button (click) = "sidenav.toggle()" color="warn">Clear</button>
   </div>
   
 </form>
-<button mat-raised-button (click) = "sidenav.toggle()" style="background-color:palegoldenrod; margin-top:10px;">Clear</button>
 
 </mat-sidenav>
-
 <mat-sidenav-content>
+  <div  fxLayout="row wrap" >
+    <ng-template let-connection ngFor  [ngForOf]="connections">
+      <mat-card class = "database-card" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="25" fxFlex.lg="20" fxFlex.xl="16.333">
+        <h3>{{connection.name}}</h3>
+        <h4>{{connection.type}}</h4>
+        <mat-card-actions> <button mat-raised-button fxFill (click) = "createConnection(connection)">connect</button> </mat-card-actions>
+      </mat-card>
+    </ng-template>
+  </div>
+  
   <div class="btn">
-  <button mat-mini-fab (click) = "sidenav.toggle()" style="background-color:yellow"><i class="material-icons">add_circle</i></button>
-</div>
+    <button mat-mini-fab (click) = "sidenav.toggle()" color="primary" class="btn"><mat-icon>add</mat-icon></button>
+  </div>
+  
 </mat-sidenav-content>
 
 </mat-sidenav-container>
 
-<div *ngFor = "let connection of connections">
-  <mat-card class = "database-card">
-    <h3>{{connection.name}}</h3>
-    <h4>{{connection.type}}</h4>
-    <mat-card-actions> <button mat-raised-button fxFill (click) = "createConnection(connection)">connect</button> </mat-card-actions>
-  </mat-card>
-</div>
+
+
 

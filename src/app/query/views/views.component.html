@@ -1,3 +1,10 @@
-<p>
-  views works!
-</p>
+<mat-accordion>
+  <mat-expansion-panel  color="primary">
+      <mat-expansion-panel-header >
+        Views
+      </mat-expansion-panel-header>
+      <div *ngFor = "let table of tables" >
+        {{table.table_name}}
+      </div>
+    </mat-expansion-panel>
+</mat-accordion>

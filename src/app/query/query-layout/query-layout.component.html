@@ -1,12 +1,21 @@
 
 
-<mat-drawer-container fxFill>
-    <mat-drawer mode="side" opened="true" style="width:15vw">
+<mat-drawer-container >
+    <mat-drawer mode="side" opened="true" style="width:15vw; border-right: 1px solid #ccc;">
         <app-tables></app-tables>
+        <app-views></app-views>
+        <app-store-procedurs></app-store-procedurs>
     </mat-drawer>
-    <mat-drawer-content>
-            <app-query-grid (outputEvent)="executeQuery($event)"></app-query-grid>
-        <app-query-results [inputData]="query"></app-query-results>
+    <mat-drawer-content >
+            <app-query-grid (outputEvent)="executeQuery($event)" style="z-index:1"></app-query-grid>
+           
+            <mat-card style="z-index:0">
+                <mat-card-subtitle>Results</mat-card-subtitle>
+                <mat-card-content>
+                    <app-query-results [inputData]="query"></app-query-results>
+                </mat-card-content>
+            </mat-card>
+       
        
     </mat-drawer-content>
   </mat-drawer-container>
