@@ -4,7 +4,7 @@
 @include mat-core();
 
 $mat-primary: mat-palette($mat-deep-purple, 600);
-$mat-accent:  mat-palette($mat-lime, 100);
+$mat-accent:  mat-palette($mat-lime, 600);
 $mat-warn:    mat-palette($mat-red);
 
 $mat-theme: mat-light-theme($mat-primary, $mat-accent, $mat-warn);
@@ -20,7 +20,6 @@ $alt-theme: mat-light-theme($alt-primary, $alt-accent);
 }
 
 $custom-typography: mat-typography-config(
-  $font-family: 'Roboto, monospace',
   $headline: mat-typography-level(32px, 48px, 700),
   $body-1: mat-typography-level(16px, 24px, 300)
 );
