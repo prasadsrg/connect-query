@@ -516,6 +516,7 @@ module.exports = {
     "fs": "require('fs')",
     "path": "require('path')",
     "net": "require('net')",
-    "mysql": "require('mysql')"
+    "mysql": "require('mysql')",
+    "Draggable": "require('Draggable')"
  }
 };

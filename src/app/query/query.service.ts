@@ -34,5 +34,15 @@ export class QueryService {
         console.log(query.sql);
       });
    }
+   getTableInfo(table_name,callback){
+        this.mysqlConnectionService.get( (err, conn) =>{
+                if(err) throw err;
+                var query= conn.query("describe "+table_name, (err, rows, fields) => {
+                        if(err)  throw err;
+                        callback(JSON.parse(JSON.stringify(rows)), fields) 
+                });
+                console.log(query.sql);
+              });
+   }
 
 }

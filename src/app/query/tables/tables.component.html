@@ -4,12 +4,25 @@
     </div>
     
     <mat-accordion>
-        <mat-expansion-panel  color="primary">
+        <mat-expansion-panel  color="primary" (opened) ="getTables()">
             <mat-expansion-panel-header >
               Tables
             </mat-expansion-panel-header>
-            <div *ngFor = "let table of tables" >
-              {{table.table_name}}
+            <div *ngFor = "let table of tables">
+                    <mat-accordion>
+                            <mat-expansion-panel (opened) = "getTablesInfo(table.table_name)" [multi]="false">
+                                    <mat-expansion-panel-header>
+                                        {{table.table_name}}      
+                                    </mat-expansion-panel-header>
+                                    <mat-list>
+                                            <mat-list-item *ngFor="let tb_info of tables_info">
+                                              <h6 matLine style="font-size:14px;"> {{tb_info.Field}} </h6>
+                                              <p matLine style="font-size:12px;"> {{tb_info.Type}} </p>
+                                            </mat-list-item>
+                                          </mat-list>
+                            </mat-expansion-panel>
+                    </mat-accordion>
+             
             </div>
           </mat-expansion-panel>
     </mat-accordion>
