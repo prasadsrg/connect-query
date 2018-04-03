@@ -58,7 +58,7 @@
             
   </mat-form-field>
 
-  <button type = "submit" mat-raised-button style="background-color:limegreen;" >Submit</button>
+  <button type = "submit" mat-raised-button>Submit</button>
   
   </div>
   
@@ -68,9 +68,9 @@
 </mat-sidenav>
 
 <mat-sidenav-content>
-  
-  <button mat-raised-button (click) = "sidenav.toggle()" style="background-color:limegreen;">Add Database</button>
-
+  <div class="btn">
+  <button mat-mini-fab (click) = "sidenav.toggle()" style="background-color:yellow"><i class="material-icons">add_circle</i></button>
+</div>
 </mat-sidenav-content>
 
 </mat-sidenav-container>

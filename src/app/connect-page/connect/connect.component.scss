@@ -6,7 +6,7 @@
     right:0;
     left:auto;
     width:300px;
-    background-color: lightslategrey;
+    //background-color: lightslategrey;
 }
 .ex-container {
     position: relative;
@@ -29,4 +29,9 @@
     width: 20%;
     background-color: orange;
     margin-bottom: 20px;
+}
+.btn{
+    bottom: 60px;
+    position: fixed;
+    margin-left: 240px;
 }
