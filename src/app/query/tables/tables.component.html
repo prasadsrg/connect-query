@@ -1,0 +1,19 @@
+
+    <div class="alternative">
+        <button mat-raised-button (click) = "switchToConnect()" style="width: 100%"  color="primary">Back</button>
+    </div>
+    
+    <mat-accordion>
+        <mat-expansion-panel fxFill color="primary">
+            <mat-expansion-panel-header >
+              Tables
+            </mat-expansion-panel-header>
+            <div *ngFor = "let table of tables" >
+              {{table.table_name}}
+            </div>
+          </mat-expansion-panel>
+    </mat-accordion>
+
+     
+
+

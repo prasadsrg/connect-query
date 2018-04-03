@@ -8,14 +8,14 @@ function createWindow () {
   win = new BrowserWindow({width: 1280, height: 720})
 
   // load the dist folder from Angular
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, 'dist/index.html'),
-    protocol: 'file:',
-    slashes: false
-  }))
-
+  // win.loadURL(url.format({
+  //   pathname: path.join(__dirname, 'dist/index.html'),
+  //   protocol: 'file:',
+  //   slashes: false
+  // }))
+  win.loadURL('http://localhost:4200');
   // Open the DevTools optionally:
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   win.on('closed', () => {
     win = null
