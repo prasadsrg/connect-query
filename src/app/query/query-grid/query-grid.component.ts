@@ -9,6 +9,7 @@ import { TablesComponent } from '../tables/tables.component';
 })
 export class QueryGridComponent implements OnInit {
   public queryText="";
+  public simpleDrop :any =null;
   @Output()
   outputEvent: EventEmitter<any> = new EventEmitter();
   constructor() {
@@ -21,5 +22,10 @@ export class QueryGridComponent implements OnInit {
   executeQuery(){
     console.log(this.queryText);
     this.outputEvent.emit(this.queryText);
+  }
+  transferDataSuccess($event:any){
+    this.simpleDrop = "select * from "+JSON.parse(JSON.stringify($event)).dragData+ ";";
+    this.queryText = this.simpleDrop;
+    console.log(this.simpleDrop);
   }
 }

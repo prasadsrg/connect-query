@@ -1,21 +1,27 @@
 
     <div class="alternative">
-        <button mat-raised-button (click) = "switchToConnect()" style="width: 100%"  color="primary">Back</button>
+        <button mat-raised-button (click) = "switchToConnect()" style="width: 100%" color="primary">Back</button>
+        <button mat-raised-button (click) = "switchToGenerateQuery()" style="width: 100%; margin-top:10px;"  color="primary">Generate Query</button>
     </div>
     
     <mat-accordion>
         <mat-expansion-panel  color="primary" (opened) ="getTables()">
             <mat-expansion-panel-header >
-              Tables
+             <mat-panel-title>
+                Tables
+             </mat-panel-title> 
+             <mat-panel-description>
+                {{table_size}}
+            </mat-panel-description>   
             </mat-expansion-panel-header>
             <div *ngFor = "let table of tables">
-                    <mat-accordion>
-                            <mat-expansion-panel (opened) = "getTablesInfo(table.table_name)" [multi]="false">
-                                    <mat-expansion-panel-header>
+                    <mat-accordion >
+                            <mat-expansion-panel (opened) = "getTablesInfo(table)">
+                                    <mat-expansion-panel-header dnd-draggable [dragEnabled]="true" [dragData]="table.table_name">
                                         {{table.table_name}}      
                                     </mat-expansion-panel-header>
                                     <mat-list>
-                                            <mat-list-item *ngFor="let tb_info of tables_info">
+                                            <mat-list-item *ngFor="let tb_info of table.attrs">
                                               <h6 matLine style="font-size:14px;"> {{tb_info.Field}} </h6>
                                               <p matLine style="font-size:12px;"> {{tb_info.Type}} </p>
                                             </mat-list-item>

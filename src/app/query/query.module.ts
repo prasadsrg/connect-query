@@ -11,9 +11,12 @@ import { QueryService } from './query.service';
 import { InfiniteListComponent} from '../shared/components/infinite-list.component';
 import { RespTableComponent } from '../shared/components/resp-table.component';
 import { MatModule } from '../mat.module';
+import { DndModule } from 'ng2-dnd';
 import { Routes, RouterModule } from '@angular/router';
+import { GenerateQueryComponent } from '../query/generate-query/generate-query.component';
 const routes: Routes = [
-  { path: 'layout', component: QueryLayoutComponent}
+  { path: 'layout', component: QueryLayoutComponent},
+  { path: 'generate', component: GenerateQueryComponent}
 
 ];
 
@@ -21,13 +24,14 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes, { useHash: true }),
-    MatModule
+    MatModule,
+    DndModule.forRoot()
   ],
 
   providers:[QueryService],
   exports: [RouterModule],
   declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
      StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,
-     InfiniteListComponent, RespTableComponent]
+     InfiniteListComponent, RespTableComponent, GenerateQueryComponent]
 })
 export class QueryModule { }

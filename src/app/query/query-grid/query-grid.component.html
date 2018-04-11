@@ -1,5 +1,6 @@
 
-<textarea [(ngModel)]="queryText" rows="10" style="  border:1px solid #999999;width: 99%;margin:5px 0;padding:3px;"></textarea>
+<textarea [(ngModel)]="queryText" rows="10" style="  border:1px solid #999999;width: 99%;margin:5px 0;padding:3px;" dnd-droppable 
+(onDropSuccess)="transferDataSuccess($event)" value="{{simpleDrop}}"></textarea>
 <div>
     <button  mat-fab color="primary" (click)="executeQuery()" style="    z-index: 9;    position: absolute; top: 136px; right: 8px;">
       <mat-icon>send</mat-icon>

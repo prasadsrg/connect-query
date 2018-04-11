@@ -1,34 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { QueryService } from '../query.service';
 import { Router } from '@angular/router';
+//import { DragAndDropModule } from 'angular-draggable-droppable';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.scss']
 })
+
 export class TablesComponent implements OnInit{
   public tables: any = [];
-  public tables_info:any = [];
-  public table_name:any;
+  //public tables_info: Map<any,any>;
+  public table_size : any;
   constructor(private query_service: QueryService, private router: Router) {
   }
   ngOnInit(){
-
   }
   getTables(){
     this.query_service.getTables((data) =>{
       console.log(data);
-      this.tables = data;
+      this.tables = [];
+      data.forEach(element => {
+        this.tables.push({table_name: element.table_name, attrs:[]})
+      });
+      this.table_size = Object.keys(this.tables).length;
     });
   }
-  getTablesInfo(table_name){
-    this.query_service.getTableInfo(table_name,(rows,fields)=>{
-      this.tables_info = rows;
-      console.log(this.tables_info);
+  getTablesInfo(table){
+    table.attrs = [];
+    this.query_service.getTableInfo(table.table_name,(rows,fields)=>{
+      table.attrs = rows
+      //this.tables_info.set(table_name,rows);
+      //console.log(this.tables_info);
     });
   }
   switchToConnect(){
     this.router.navigate(['connect']);
+  }
+  switchToGenerateQuery(){
+    this.router.navigate(['generate']);
   }
 }
