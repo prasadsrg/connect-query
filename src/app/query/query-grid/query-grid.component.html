@@ -1,8 +1,16 @@
 
-<textarea [(ngModel)]="queryText" rows="10" style="  border:1px solid #999999;width: 99%;margin:5px 0;padding:3px;" dnd-droppable 
-(onDropSuccess)="transferDataSuccess($event)" value="{{simpleDrop}}"></textarea>
+<textarea rows="10" style="  border:1px solid #999999;width: 45%;margin:5px 0;padding:3px; margin-left:5px;" dnd-droppable 
+(onDropSuccess)="tableDataSuccess($event)" value="{{tablePart}}" placeholder="Table Names"></textarea>
+<textarea rows="10" style="  border:1px solid #999999;width: 45%;margin:5px 0;padding:3px;" dnd-droppable 
+(onDropSuccess)="selectDataSuccess($event)" value="{{attributePart}}" placeholder="Attributes"></textarea>
+<textarea [(ngModel)]="queryText" rows="3" style="  border:1px solid #999999;width: 91%;margin:5px 0;padding:3px; margin-left:5px;" 
+value="{{completeQuery}}"></textarea>
 <div>
-    <button  mat-fab color="primary" (click)="executeQuery()" style="    z-index: 9;    position: absolute; top: 136px; right: 8px;">
-      <mat-icon>send</mat-icon>
+    <button  mat-raised-button color="primary" (click)="generateQuery()" style="    z-index: 9;    position: absolute; top: 136px; right: 8px;">
+    Generate Query</button >
+  </div>
+  <div>
+    <button  mat-fab color="primary" (click)="executeQuery()" style="    z-index: 9;    position: absolute; top: 184px; right: 18px;">
+    <mat-icon>send</mat-icon>
     </button >
   </div>

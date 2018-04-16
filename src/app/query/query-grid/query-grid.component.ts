@@ -1,6 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { TablesComponent } from '../tables/tables.component';
+import { GenerateQueryComponent } from '../generate-query/generate-query.component';
 
 @Component({
   selector: 'app-query-grid',
@@ -9,7 +10,13 @@ import { TablesComponent } from '../tables/tables.component';
 })
 export class QueryGridComponent implements OnInit {
   public queryText="";
-  public simpleDrop :any =null;
+
+  // editorOptions:any = {theme: 'vs-dark', language: 'javascript'};
+  // code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+  
+  public tablePart :any = null;
+  public attributePart:any = null;
+  public completeQuery:any = null;
   @Output()
   outputEvent: EventEmitter<any> = new EventEmitter();
   constructor() {
@@ -23,9 +30,22 @@ export class QueryGridComponent implements OnInit {
     console.log(this.queryText);
     this.outputEvent.emit(this.queryText);
   }
-  transferDataSuccess($event:any){
-    this.simpleDrop = "select * from "+JSON.parse(JSON.stringify($event)).dragData+ ";";
-    this.queryText = this.simpleDrop;
-    console.log(this.simpleDrop);
+  tableDataSuccess($event:any){
+    if(this.tablePart === null)
+    this.tablePart = " from "+JSON.parse(JSON.stringify($event)).dragData;
+    console.log(this.tablePart)
+  }
+  selectDataSuccess($event:any){
+    if(this.attributePart === null)
+    this.attributePart = "select "+JSON.parse(JSON.stringify($event)).dragData;
+    else
+    this.attributePart = this.attributePart+","+JSON.parse(JSON.stringify($event)).dragData;
+  }
+  generateQuery(){
+    if(this.attributePart === null)
+    this.completeQuery = "select * "+this.tablePart;
+    else
+    this.completeQuery = this.attributePart+this.tablePart;
+    this.queryText = this.completeQuery;
   }
 }

@@ -22,7 +22,7 @@
                                     </mat-expansion-panel-header>
                                     <mat-list>
                                             <mat-list-item *ngFor="let tb_info of table.attrs">
-                                              <h6 matLine style="font-size:14px;"> {{tb_info.Field}} </h6>
+                                              <h6 matLine style="font-size:14px;" dnd-draggable [dragEnabled]="true" [dragData]="tb_info.Field"> {{tb_info.Field}} </h6>
                                               <p matLine style="font-size:12px;"> {{tb_info.Type}} </p>
                                             </mat-list-item>
                                           </mat-list>

@@ -14,6 +14,7 @@ import { MatModule } from '../mat.module';
 import { DndModule } from 'ng2-dnd';
 import { Routes, RouterModule } from '@angular/router';
 import { GenerateQueryComponent } from '../query/generate-query/generate-query.component';
+// import { MonacoEditorModule } from 'ngx-monaco-editor';
 const routes: Routes = [
   { path: 'layout', component: QueryLayoutComponent},
   { path: 'generate', component: GenerateQueryComponent}
@@ -25,7 +26,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes, { useHash: true }),
     MatModule,
-    DndModule.forRoot()
+    DndModule.forRoot(),
+    // MonacoEditorModule.forRoot()
   ],
 
   providers:[QueryService],

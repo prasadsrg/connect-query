@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-generate-query',
@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./generate-query.component.scss']
 })
 export class GenerateQueryComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(){}
   ngOnInit() {
+     
   }
 
 }

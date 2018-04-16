@@ -13,7 +13,7 @@ MatExpansionModule, MatListModule} from '@angular/material';
           ],
   exports: [
     MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatInputModule, MatSelectModule, 
-    FlexLayoutModule,FormsModule, MatExpansionModule,MatListModule
+    FlexLayoutModule,FormsModule, MatExpansionModule, MatListModule
     ],
 })
 export class MatModule { }
