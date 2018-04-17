@@ -33,6 +33,8 @@ export class QueryGridComponent implements OnInit {
   tableDataSuccess($event:any){
     if(this.tablePart === null)
     this.tablePart = " from "+JSON.parse(JSON.stringify($event)).dragData;
+    else
+    this.tablePart += " inner join "+JSON.parse(JSON.stringify($event)).dragData;
     console.log(this.tablePart)
   }
   selectDataSuccess($event:any){
