@@ -1,7 +1,14 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, ViewChild } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { TablesComponent } from '../tables/tables.component';
 import { GenerateQueryComponent } from '../generate-query/generate-query.component';
+import { AceEditorModule } from 'ng2-ace-editor';
+import 'brace/index';
+import 'brace/theme/ambiance';
+import 'brace/mode/sql';
+import 'brace/mode/javascript';
+import 'brace/ext/language_tools.js';
+declare var ace: any;
 
 @Component({
   selector: 'app-query-grid',
@@ -20,10 +27,25 @@ export class QueryGridComponent implements OnInit {
   @Output()
   outputEvent: EventEmitter<any> = new EventEmitter();
   constructor() {
-    
   }
+@ViewChild('editor') editor;
+ngAfterViewInit() {
+  //this.editor.setTheme("eclipse");
 
+  this.editor.getEditor().setOptions({
+      enableBasicAutocompletion: true
+  });
+
+  this.editor.getEditor().commands.addCommand({
+      name: "showOtherCompletions",
+      bindKey: "Ctrl-.",
+      exec: function (editor) {
+
+      }
+  })
+}
   ngOnInit() {
+    
   }
 
   executeQuery(){

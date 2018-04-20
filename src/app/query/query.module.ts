@@ -14,6 +14,9 @@ import { MatModule } from '../mat.module';
 import { DndModule } from 'ng2-dnd';
 import { Routes, RouterModule } from '@angular/router';
 import { GenerateQueryComponent } from '../query/generate-query/generate-query.component';
+import { ExportFileComponent } from './export-file/export-file.component';
+import { AceEditorModule } from 'ng2-ace-editor';
+
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
 const routes: Routes = [
   { path: 'layout', component: QueryLayoutComponent},
@@ -27,6 +30,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { useHash: true }),
     MatModule,
     DndModule.forRoot(),
+    AceEditorModule
     // MonacoEditorModule.forRoot()
   ],
 
@@ -34,6 +38,6 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
      StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,
-     InfiniteListComponent, RespTableComponent, GenerateQueryComponent]
+     InfiniteListComponent, RespTableComponent, GenerateQueryComponent, ExportFileComponent]
 })
 export class QueryModule { }

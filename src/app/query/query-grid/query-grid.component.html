@@ -1,17 +1,23 @@
 
 <div style="border:1px solid;">
-<textarea rows="10" style="  border:1px solid #999999;width: 43%;margin:5px 0;padding:3px; margin-left:5px;" dnd-droppable 
+<textarea rows="7" style="  border:1px solid #999999;width: 43%;margin:5px 0;padding:3px; margin-left:5px;" dnd-droppable 
 (onDropSuccess)="tableDataSuccess($event)" value="{{tablePart}}" placeholder="Table Names"></textarea>
-<textarea rows="10" style="  border:1px solid #999999;width: 44%;margin:5px 0;padding:3px;" dnd-droppable 
+<textarea rows="7" style="  border:1px solid #999999;width: 44%;margin:5px 0;padding:3px;" dnd-droppable 
 (onDropSuccess)="selectDataSuccess($event)" value="{{attributePart}}" placeholder="Attributes"></textarea>
 
 <div>
-    <button  mat-raised-button color="primary" (click)="generateQuery()" style="    z-index: 9;    position: absolute; top: 127px; right: 8px;">
+    <button  mat-raised-button color="primary" (click)="generateQuery()" style="    z-index: 9;    position: absolute; top: 50px; right: 8px;">
     Generate</button >
   </div>
 </div>
-<textarea [(ngModel)]="queryText" rows="3" style="  border:1px solid #999999;width: 88%;margin:5px 0;padding:3px; margin-left:5px;" 
-value="{{completeQuery}}"></textarea>
+<!-- <textarea [(ngModel)]="queryText" rows="3" style="  border:1px solid #999999;width: 88%;margin:5px 0;padding:3px; margin-left:5px;" 
+value="{{completeQuery}}" id="editor"></textarea> -->
+<!-- <div id = "editor" style="height:50px; width:88%;border:1px solid #999999;margin:5px 0;padding:3px; margin-left:5px;">
+
+</div> -->
+<ace-editor #editor [(text)] =  "queryText" [autoUpdateContent]="true" [mode] = "'sql'"style="height:100px; width:88%;border:1px solid #999999;margin:5px 0;padding:3px; margin-left:5px;">
+
+</ace-editor>
   <div>
     <button  mat-fab color="primary" (click)="executeQuery()" style="    z-index: 9;    position: absolute; top: 177px; right: 48px;">
     <mat-icon>send</mat-icon>

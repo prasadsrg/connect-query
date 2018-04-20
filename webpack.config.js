@@ -517,6 +517,7 @@ module.exports = {
     "path": "require('path')",
     "net": "require('net')",
     "mysql": "require('mysql')",
-    "Draggable": "require('Draggable')"
+    "Draggable": "require('Draggable')",
+    "ace": "require('ace-code-editor')"
  }
 };
