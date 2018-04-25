@@ -1,5 +1,6 @@
-import { Component, OnInit, SimpleChanges, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input, OnChanges, Output } from '@angular/core';
 import { QueryService } from '../query.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-query-results',
@@ -12,6 +13,9 @@ export class QueryResultsComponent implements OnChanges {
   inputData: any = null;
   constructor(private queryService: QueryService) { }
 
+  @Output()
+  outputEvent: EventEmitter<any> = new EventEmitter();
+
   public dataColumns: any[] = [];
   public dataList: any[] = [];
   ngOnChanges(changes: SimpleChanges) {
@@ -22,7 +26,7 @@ export class QueryResultsComponent implements OnChanges {
   }
 
   executeQuery(query: any){
-    console.log(query);
+    //console.log(query);
     this.queryService.executeQuery(query, (rows, fields) =>{
       this.dataColumns = [];
       this.dataList = [];
@@ -31,8 +35,9 @@ export class QueryResultsComponent implements OnChanges {
         this.dataColumns.push({td: element.name, th: element.name});
       });
       this.dataList = rows;
-      console.log(this.dataColumns);
+      this.outputEvent.emit(this.dataList);
     })
+  
   }
   
 }

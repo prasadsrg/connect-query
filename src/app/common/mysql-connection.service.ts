@@ -11,7 +11,7 @@ export class MysqlConnectionService {
     }
    }
   establishConnection(database_card:any) {
-    console.log(database_card);
+    //console.log(database_card);
     sessionStorage.setItem('cq_current', JSON.stringify(database_card));
     this.pool = mysql.createPool({
       connectionLimit : 1000,

@@ -13,14 +13,14 @@ import { RespTableComponent } from '../shared/components/resp-table.component';
 import { MatModule } from '../mat.module';
 import { DndModule } from 'ng2-dnd';
 import { Routes, RouterModule } from '@angular/router';
-import { GenerateQueryComponent } from '../query/generate-query/generate-query.component';
 import { ExportFileComponent } from './export-file/export-file.component';
 import { AceEditorModule } from 'ng2-ace-editor';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
 const routes: Routes = [
   { path: 'layout', component: QueryLayoutComponent},
-  { path: 'generate', component: GenerateQueryComponent}
+  { path: 'generate', component: UploadFileComponent}
 
 ];
 
@@ -38,6 +38,6 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
      StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,
-     InfiniteListComponent, RespTableComponent, GenerateQueryComponent, ExportFileComponent]
+     InfiniteListComponent, RespTableComponent, UploadFileComponent, ExportFileComponent]
 })
 export class QueryModule { }

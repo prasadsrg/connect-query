@@ -20,7 +20,7 @@ export class QueryService {
               if(err)  throw err;
               callback(JSON.parse(JSON.stringify(rows))) 
       });
-      console.log(query.sql);
+      //console.log(query.sql);
     });
    }
 
@@ -31,7 +31,7 @@ export class QueryService {
                 if(err)  throw err;
                 callback(JSON.parse(JSON.stringify(rows)), fields) 
         });
-        console.log(query.sql);
+        //console.log(query.sql);
       });
    }
    getTableInfo(table_name,callback){
@@ -41,7 +41,7 @@ export class QueryService {
                         if(err)  throw err;
                         callback(JSON.parse(JSON.stringify(rows)), fields) 
                 });
-                console.log(query.sql);
+                //console.log(query.sql);
               });
    }
 

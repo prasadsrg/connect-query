@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, Input, ViewChild } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { TablesComponent } from '../tables/tables.component';
-import { GenerateQueryComponent } from '../generate-query/generate-query.component';
 import { AceEditorModule } from 'ng2-ace-editor';
 import 'brace/index';
 import 'brace/theme/ambiance';
@@ -49,7 +48,7 @@ ngAfterViewInit() {
   }
 
   executeQuery(){
-    console.log(this.queryText);
+    //console.log(this.queryText);
     this.outputEvent.emit(this.queryText);
   }
   tableDataSuccess($event:any){
@@ -57,7 +56,7 @@ ngAfterViewInit() {
     this.tablePart = " from "+JSON.parse(JSON.stringify($event)).dragData;
     else
     this.tablePart += " inner join "+JSON.parse(JSON.stringify($event)).dragData;
-    console.log(this.tablePart)
+    //console.log(this.tablePart)
   }
   selectDataSuccess($event:any){
     if(this.attributePart === null)

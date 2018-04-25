@@ -518,6 +518,11 @@ module.exports = {
     "net": "require('net')",
     "mysql": "require('mysql')",
     "Draggable": "require('Draggable')",
-    "ace": "require('ace-code-editor')"
+    "ace": "require('ace-code-editor')",
+    "fdiag": "require('save-file')",
+    "jsonexport": "require('jsonexport')",
+    "dialog": "require('open-file-dialog')",
+    "csv": "require('csv-parser')",
+    "cm": "require('csv-mysql')"
  }
 };

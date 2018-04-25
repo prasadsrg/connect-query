@@ -20,7 +20,7 @@ export class TablesComponent implements OnInit{
   }
   getTables(){
     this.query_service.getTables((data) =>{
-      console.log(data);
+      //console.log(data);
       this.tables = [];
       data.forEach(element => {
         this.tables.push({table_name: element.table_name, attrs:[]})
@@ -39,7 +39,7 @@ export class TablesComponent implements OnInit{
   switchToConnect(){
     this.router.navigate(['connect']);
   }
-  switchToGenerateQuery(){
+  switchToUploadFile(){
     this.router.navigate(['generate']);
   }
 }

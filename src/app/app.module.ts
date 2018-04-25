@@ -24,4 +24,5 @@ import {MysqlConnectionService} from './common/mysql-connection.service'
   providers: [MysqlConnectionService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }
