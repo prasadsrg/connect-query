@@ -522,7 +522,7 @@ module.exports = {
     "fdiag": "require('save-file')",
     "jsonexport": "require('jsonexport')",
     "dialog": "require('open-file-dialog')",
-    "csv": "require('csv-parser')",
-    "cm": "require('csv-mysql')"
+    "csv": "require('csv')",
+    "csv2sql-stream": "require('csv2sql-stream')"
  }
 };
