@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ConnectComponent } from '../../connect-page/connect/connect.component';
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
@@ -8,39 +8,51 @@ import { Router } from '@angular/router';
 })
 export class UploadFileComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  public databaseCard: any; 
+  constructor(private router:Router) {
+  }
 
   ngOnInit() {
   }
-  public filenames:any = [];
   uploadMultipleFiles(){
-    let dialog = require('open-file-dialog');
+    this.databaseCard = ConnectComponent.database_card;
+    var dialog = require('open-file-dialog');
     dialog({
       multiple:true,
     },function(files){
       console.log(files);
        let fileList = JSON.parse(JSON.stringify(files));
        console.log(fileList);
-       fileList.forEach(element => {
-        let csv = require('csv-parser');
-        let fs = require('fs');
-        fs.createReadStream(element.name)
+       for(var i = 0;i <files.length;++i) {
+        var csv = require('csv-parser');
+        var fs = require('fs');
+        fs.createReadStream(files[i].path)
         .pipe(csv())
         .on('data',function(data){
-          let jsonexport = require('jsonexport');
+          var jsonexport = require('jsonexport');
           jsonexport(data,function(err,csvdata){
             if(err) 
             console.log(err);
-            let cm = require('csv-mysql');
-            let options ={table:'emp'};
+            var cm = require('csv-mysql');
+            var options ={mysql: {
+              host: '127.0.0.1',
+              user: this.databaseCard.username,
+              database: this.databaseCard.schema,
+            },
+            csv: {
+              comment: '#',
+              quote: '"'
+            },
+            table:'emp'};
+            
             cm.import(options,csvdata,function(err,rows){
               console.log(rows);
             });
           });
         });
-      });
-    })
-  }
+    }
+  })
+ }
   switchToLayout(){
     this.router.navigate(['layout']);
   }
