@@ -28,7 +28,7 @@ export class QueryService {
     this.mysqlConnectionService.get( (err, conn) =>{
         if(err) throw err;
         var query= conn.query(queryText, (err, rows, fields) => {
-                if(err)  throw err;
+                if(err)  callback(JSON.parse(JSON.stringify(err)),"error");
                 callback(JSON.parse(JSON.stringify(rows)), fields) 
         });
         //console.log(query.sql);

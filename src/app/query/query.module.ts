@@ -17,6 +17,7 @@ import { ExportFileComponent } from './export-file/export-file.component';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { ConnectPageService } from '../connect-page/connect/connect-page.service';
+import { FileUploadService } from '../common/upload-file.service';
 
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
 const routes: Routes = [
@@ -35,7 +36,7 @@ const routes: Routes = [
     // MonacoEditorModule.forRoot()
   ],
 
-  providers:[QueryService, ConnectPageService],
+  providers:[QueryService, ConnectPageService, FileUploadService],
   exports: [RouterModule],
   declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
      StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,

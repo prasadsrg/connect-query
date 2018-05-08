@@ -1,2 +1,7 @@
-<button mat-raised-button (click) = "uploadMultipleFiles()">Select Files</button>
+<form #userForm = "ngForm">
+<mat-form-field>
+<input matInput placeholder="Enter Table Name" name="tname" ngModel>
+</mat-form-field>
+<button mat-raised-button color = "primary" (click) = "uploadMultipleFiles(userForm.value)">Select Files</button>
+</form>
 <button mat-raised-button (click) = "switchToLayout()">Back</button>

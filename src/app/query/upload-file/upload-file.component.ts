@@ -4,6 +4,11 @@ import { ConnectComponent } from '../../connect-page/connect/connect.component';
 import { Session } from 'protractor';
 import * as csv2sql  from 'csv2sql-stream';
 import * as fs from 'fs';
+import { FileUploadService } from '../../common/upload-file.service';
+import { QueryService } from '../../query/query.service';
+import * as fast from 'fast-csv';
+import * as jsonsql from 'json-sql';
+import *as graph from 'chart-csv';
 
 @Component({
   selector: 'app-upload-file',
@@ -12,13 +17,14 @@ import * as fs from 'fs';
 })
 export class UploadFileComponent implements OnInit {
 
-  public databaseCard: any; 
-  constructor(private router:Router) {
+  public databaseCard: any;
+  public sdata:any = [];
+  constructor(private router:Router, private fileUploadService: FileUploadService, private queryService: QueryService) {
   }
 
   ngOnInit() {
   }
-  uploadMultipleFiles(){
+  uploadMultipleFiles(value:any){
     
     var dialog = require('open-file-dialog');
     dialog({
@@ -28,51 +34,27 @@ export class UploadFileComponent implements OnInit {
        let fileList = JSON.parse(JSON.stringify(files));
        console.log(fileList);
        this.databaseCard = JSON.parse(sessionStorage.getItem('cq_current'));
+       console.log(value.tname);
        for(var i = 0;i <files.length;++i) {
-        // var csv = require('csv');
-        // var fs = require('fs');
-        // fs.createReadStream(files[i].path)
-        // .pipe(csv.parse())
-        // .on('data',function(data){
-        //   var jsonexport = require('jsonexport');
-        //   this.databaseCard = JSON.parse(sessionStorage.getItem('cq_current'));
-
-        //   jsonexport(data, (err,csvdata) => {
-        //     if(err) 
-        //     console.log(err);
-        //     var cm = require('csv-mysql');
-        //     var options ={mysql: {
-        //       host: this.databaseCard.host,
-        //       user: this.databaseCard.username,
-        //       password: this.databaseCard.password,
-        //       database: this.databaseCard.schema,
-        //     },
-        //     csv: {
-        //       comment: '#',
-        //       quote: '"'
-        //     },
-        //     table:'emp'};
-            
-        //     cm.import(options,csvdata,function(err,rows){
-        //       console.log(rows);
-        //     });
-        //   });
-        // });
-        //exporter(this.databaseCard.host,this.databaseCard.schema,this.databaseCard.username,this.databaseCard.password, files[i].path);
-        console.log(files[i]);
-        csv2sql.transform("emp",fs.createReadStream(files[i].path))
-          .on('data',function(sql){
-            console.log(sql); //INSERT INTO DOGS ...
+        
+      this.fileUploadService.getUploadQueries(value.tname, files[i], (data) => {
+               this.sdata.push(data);
+        });
+       // console.log(this.sdata);
+        // for(let j = 0; j < uploadQueries; ++j) {
+        //   this.queryService.executeQuery(uploadQueries[j],(rows,fields) =>{
+        //   })
+        // }
+        this.sdata = JSON.parse(JSON.stringify(this.sdata));
+        this.sdata.forEach(element => {
+          this.queryService.executeQuery(element,(rows,fields) =>{
           })
-          .on('end',function(rows){
-            console.log(rows); // 5 - Num of rows handled, including header
-          })
-          .on('error', function(error){
-            console.error(error); //Handle error
-          })
-    }
-  })
- }
+          console.log(element);
+          //console.log("hi");
+        });
+       }
+})
+  }
   switchToLayout(){
     this.router.navigate(['layout']);
   }

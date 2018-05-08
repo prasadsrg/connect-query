@@ -523,6 +523,9 @@ module.exports = {
     "jsonexport": "require('jsonexport')",
     "dialog": "require('open-file-dialog')",
     "csv": "require('csv')",
-    "csv2sql-stream": "require('csv2sql-stream')"
+    "csv2sql-stream": "require('csv2sql-stream')",
+    "fast": "require('fast-csv')",
+    "jsonsql": "require('json-sql')",
+    "graph": "require('chart-csv')"
  }
 };

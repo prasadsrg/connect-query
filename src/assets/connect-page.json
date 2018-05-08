@@ -1,1 +1,1 @@
-[{"name":"hello","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"","schema":"mydb"},{"name":"test","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"","schema":"mydb"},{"name":"Prasad-Local","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"Test!234","schema":"test"}]
+[{"name":"hello","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"","schema":"mydb"}]

@@ -14,7 +14,7 @@
                 <mat-card-content>
                     <app-query-results [inputData]="query" (outputEvent)="handleData($event)"></app-query-results>
                 </mat-card-content>
-                <button mat-raised-button style="position:absolute; top:0px; right:0px;" (click) = "selectFile()">Export to CSV</button>
+                <button mat-raised-button color = "warn" style="position:absolute; top:0px; right:0px;" (click) = "selectFile()">Export to CSV</button>
             </mat-card>
        
        

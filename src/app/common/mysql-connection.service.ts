@@ -14,6 +14,7 @@ export class MysqlConnectionService {
     //console.log(database_card);
     sessionStorage.setItem('cq_current', JSON.stringify(database_card));
     this.pool = mysql.createPool({
+
       connectionLimit : 1000,
       connectTimeout  : 60 * 60 * 1000,
       aquireTimeout   : 60 * 60 * 1000,
@@ -23,6 +24,7 @@ export class MysqlConnectionService {
       user     : database_card.username,
       password : database_card.password,
       database : database_card.schema
+      
     });
   }
 

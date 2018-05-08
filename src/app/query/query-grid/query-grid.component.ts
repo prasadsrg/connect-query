@@ -59,16 +59,19 @@ ngAfterViewInit() {
     //console.log(this.tablePart)
   }
   selectDataSuccess($event:any){
+    console.log($event);
     if(this.attributePart === null)
-    this.attributePart = "select "+JSON.parse(JSON.stringify($event)).dragData;
+    this.attributePart = "Select "+JSON.parse(JSON.stringify($event)).dragData;
     else
     this.attributePart = this.attributePart+","+JSON.parse(JSON.stringify($event)).dragData;
   }
-  generateQuery(){
+  generateQuery(value:any){
     if(this.attributePart === null)
-    this.completeQuery = "select * "+this.tablePart;
+    this.completeQuery = "Select *" + this.tablePart;
+    else if(this.attributePart !== null && value.attrs === " ")
+    this.completeQuery = "Select *" + this.tablePart;
     else
-    this.completeQuery = this.attributePart+this.tablePart;
+    this.completeQuery = this.attributePart + this.tablePart;
     this.queryText = this.completeQuery;
   }
 }
