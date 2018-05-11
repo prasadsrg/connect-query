@@ -2,7 +2,7 @@
 
 <mat-sidenav-container class="main-container" fxFill>
   
-  <mat-sidenav #sidenav [mode] = "side" align="end" fxLayout="row wrap" style="background-color:orange; padding: 1rem; max-width:345px">
+  <mat-sidenav #sidenav [mode] = "side" align="end" fxLayout="row wrap" style="background-color:lightblue; padding: 1rem; max-width:345px">
     
     <h2>Database Information</h2><br>
 
@@ -47,7 +47,7 @@
 
   <mat-form-field class="input-elements" fxFill>
           
-      <input matInput placeholder="Username" class = "form-control" required #username>
+      <input matInput placeholder="Username" class = "form-control" name = "username" ngModel required >
             
   </mat-form-field>
   <mat-form-field class="input-elements" fxFill>
@@ -74,10 +74,12 @@
   <div  fxLayout="row wrap" >
     <ng-template let-connection ngFor  [ngForOf]="connections">
       <mat-card class = "database-card" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="25" fxFlex.lg="20" fxFlex.xl="16.333">
-        <mat-icon style="float:right; cursor:pointer;" (click) = "editCard(sidenav,userForm.value)">edit</mat-icon>
+        <mat-icon style="float:right; cursor:pointer;" (click) = "editCard(connection,sidenav)">edit</mat-icon>
         <h3>{{connection.name}}</h3>
         <h4>{{connection.type}}</h4>
-        <mat-card-actions> <button mat-raised-button fxFill (click) = "createConnection(connection)"><mat-icon>wifi</mat-icon>connect</button> </mat-card-actions>
+        <mat-card-footer>
+        <button mat-raised-button fxFill (click) = "createConnection(connection)"><mat-icon>wifi</mat-icon>connect</button>
+        </mat-card-footer>
       </mat-card>
     </ng-template>
   </div>

@@ -526,6 +526,7 @@ module.exports = {
     "csv2sql-stream": "require('csv2sql-stream')",
     "fast": "require('fast-csv')",
     "jsonsql": "require('json-sql')",
-    "graph": "require('chart-csv')"
+    "graph": "require('chart-csv')",
+    "dl": "require('datalib')"
  }
 };

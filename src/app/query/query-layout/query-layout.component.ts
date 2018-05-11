@@ -2,6 +2,9 @@ import { Component, OnInit,Input } from '@angular/core';
 import {QueryService} from '../query.service';
 import { query } from '@angular/animations';
 import { $ } from 'protractor';
+import * as di from 'datalib';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'; 
+import { DataSummaryComponent } from '../data-summary/data-summary.component';
 
 @Component({
   selector: 'app-query-layout',
@@ -13,7 +16,8 @@ export class QueryLayoutComponent implements OnInit {
   private query: string;
   //@Input()
   public dataList:any = [];
-  constructor(private queryService: QueryService) {
+  public dataSummary:any ;
+  constructor(private queryService: QueryService, public dialog:MatDialog) {
   }
 
   ngOnInit() {
@@ -42,6 +46,19 @@ export class QueryLayoutComponent implements OnInit {
       });
       console.log(csv);
   });
-    
   }
+  statsSummary(){
+    console.log(this.dataList);
+    this.dataSummary =  di.summary(this.dataList);
+    console.log(this.dataSummary[0]);
+    let dialogRef = this.dialog.open(DataSummaryComponent,{
+      //width: '900px',
+      data: [this.dataSummary]
+    });
+  }
+//     var rollup = di.groupby()
+//   .summarize({'dqd': ['mean', 'stdev']})
+//   .execute(this.dataList);
+// console.log(di.format.table(rollup));
 }
+

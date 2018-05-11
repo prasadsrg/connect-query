@@ -1,1 +1,1 @@
-[{"name":"hello","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"","schema":"mydb"}]
+[{"name":"asdasd","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"","schema":"mydb"},{"name":"hi","type":"Mysql","host":"localhost","port":"3306","username":"root","password":"","schema":"mydb"}]

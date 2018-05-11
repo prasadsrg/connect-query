@@ -38,6 +38,7 @@
     "core-js": "2.4.1",
     "csv": "^3.0.2",
     "csv2sql-stream": "0.0.22",
+    "datalib": "^1.8.0",
     "draggable": "^4.2.0",
     "fast-csv": "^2.4.1",
     "file-dialog": "0.0.7",

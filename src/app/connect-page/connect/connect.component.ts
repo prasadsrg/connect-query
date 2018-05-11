@@ -1,10 +1,11 @@
-import { Component,Inject } from '@angular/core';
+import { Component,Inject, Output } from '@angular/core';
 import { ConnectPageService } from './connect-page.service';
 import { MysqlConnectionService } from '../../common/mysql-connection.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditCardComponent } from '../../connect-page/edit-card/edit-card.component';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-connect',
@@ -13,6 +14,7 @@ import { EditCardComponent } from '../../connect-page/edit-card/edit-card.compon
 })
 export class ConnectComponent{
   private databases : any = [];
+  
   private connections: any = [];
   public static database_card: any;
   public static isValidCard : any = false;
@@ -30,7 +32,10 @@ export class ConnectComponent{
     this.connections.push(formData.value);
     //console.log(JSON.stringify(this.connections));
     this.connect_service.AppendToJSONFile(JSON.stringify(this.connections));
+    //ConnectComponent.database_card = formData.value;
+    //this.database_card.push({name:formData.name,data:formData});
     //console.log(this.connections);
+    formData.reset();
     }
     else
     {
@@ -42,7 +47,6 @@ export class ConnectComponent{
       });
     }
     sidenav.toggle();
-    formData.reset();
   }
   createConnection(database_card:any) {
       ConnectComponent.database_card = database_card;
@@ -63,11 +67,13 @@ export class ConnectComponent{
     console.log("hi bro");
     else
     {
+      console.log(formData.value.username);
     this.mysqlConnectionService.establishConnection(formData.value);
     this.mysqlConnectionService.get((err,conn) => {
       if(err)
       {
-        ConnectComponent.isValidCard = false; 
+        ConnectComponent.isValidCard = false;
+        console.log(err);
         console.log("error");
         this.snackBar.open("Connection Unsuccessful..!!" ,'', {
           duration: 2000,
@@ -89,10 +95,12 @@ export class ConnectComponent{
   }
     //sidenav.toggle();
   }
-  editCard(sidenav,userForm){
-    let dialogRef = this.dialog.open(EditCardComponent, {
-      data: {} 
-    });
+  editCard(formData,sidenav){
     //sidenav.toggle();
+    console.log(formData);
+    let dialogRef = this.dialog.open(EditCardComponent,{
+      width: '500px',
+      data: {content:formData}
+    });
   }
 }

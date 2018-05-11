@@ -18,11 +18,13 @@ import { AceEditorModule } from 'ng2-ace-editor';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { ConnectPageService } from '../connect-page/connect/connect-page.service';
 import { FileUploadService } from '../common/upload-file.service';
+import { DataSummaryComponent } from './data-summary/data-summary.component';
 
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
 const routes: Routes = [
   { path: 'layout', component: QueryLayoutComponent},
-  { path: 'generate', component: UploadFileComponent}
+  { path: 'generate', component: UploadFileComponent},
+  { path: '', component: DataSummaryComponent}
 
 ];
 
@@ -40,6 +42,6 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
      StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,
-     InfiniteListComponent, RespTableComponent, UploadFileComponent, ExportFileComponent]
+     InfiniteListComponent, RespTableComponent, UploadFileComponent, ExportFileComponent, DataSummaryComponent]
 })
 export class QueryModule { }

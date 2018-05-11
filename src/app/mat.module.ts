@@ -4,16 +4,16 @@ import { FormsModule } from '@angular/forms';
 
 import {
     MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatInputModule, MatSelectModule,
-MatExpansionModule, MatListModule, MatSnackBarModule, MatDialogModule} from '@angular/material';
+MatExpansionModule, MatListModule, MatSnackBarModule, MatDialogModule, MatTableModule} from '@angular/material';
 
 @NgModule({
   imports: [
        MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatInputModule, MatSelectModule, 
-       FlexLayoutModule, FormsModule, MatExpansionModule,MatListModule, MatSnackBarModule, MatDialogModule
+       FlexLayoutModule, FormsModule, MatExpansionModule,MatListModule, MatSnackBarModule, MatDialogModule, MatTableModule
           ],
   exports: [
     MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatInputModule, MatSelectModule, 
-    FlexLayoutModule,FormsModule, MatExpansionModule, MatListModule, MatSnackBarModule, MatDialogModule
+    FlexLayoutModule,FormsModule, MatExpansionModule, MatListModule, MatSnackBarModule, MatDialogModule, MatTableModule
     ],
 })
 export class MatModule { }
