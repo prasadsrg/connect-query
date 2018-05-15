@@ -5,8 +5,8 @@ import * as mysql from 'mysql';
 export class MysqlConnectionService {
   private pool;
   constructor() {
-    let database_card = sessionStorage.getItem('cq_current')
-    if(database_card) {
+    let database_card: any = sessionStorage.getItem('cq_current');
+    if(database_card && database_card.type == 'Mysql') {
       this.establishConnection(JSON.parse(database_card));
     }
    }

@@ -8,7 +8,8 @@ import { MatModule} from './mat.module';
 import { AppComponent } from './app.component';
 import {ConnectPageModule} from './connect-page/connect-page.module'
 import {QueryModule} from './query/query.module'
-import {MysqlConnectionService} from './common/mysql-connection.service'
+import {MysqlConnectionService} from './common/mysql-connection.service';
+import { TeradataConnectionService } from './common/teradata-connection.service';
 import { FileUploadService } from './common/upload-file.service';
 
 @NgModule({
@@ -22,7 +23,7 @@ import { FileUploadService } from './common/upload-file.service';
     ConnectPageModule,
     QueryModule
   ],
-  providers: [MysqlConnectionService,FileUploadService],
+  providers: [MysqlConnectionService,FileUploadService, TeradataConnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

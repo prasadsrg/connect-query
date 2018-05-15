@@ -1,6 +1,8 @@
 import { Component,Inject, Output } from '@angular/core';
 import { ConnectPageService } from './connect-page.service';
 import { MysqlConnectionService } from '../../common/mysql-connection.service';
+import { TeradataConnectionService } from '../../common/teradata-connection.service';
+
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -20,7 +22,7 @@ export class ConnectComponent{
   public static isValidCard : any = false;
   database_type:any;
   constructor(private connect_service : ConnectPageService, private mysqlConnectionService: MysqlConnectionService, private router: Router, 
-    public snackBar: MatSnackBar, public dialog:MatDialog){ 
+    public snackBar: MatSnackBar, public dialog:MatDialog, private teradataConnectionService:TeradataConnectionService){ 
     this.databases = this.connect_service.databases;
     this.connections = this.connect_service.ReadFromJSONFile();
     this.connections = JSON.parse(this.connections);
@@ -63,15 +65,37 @@ export class ConnectComponent{
   }
   testConnection(formData,sidenav){
     this.database_type = formData.value.type;
-    if(this.database_type === 'Teradata')
-    console.log("hi bro");
+    if(this.database_type === 'Teradata'){
+          console.log(formData.value.username);
+          this.teradataConnectionService.establishConnection(formData.value);
+          this.teradataConnectionService.get((err,conn) => {
+          if(err){
+            ConnectComponent.isValidCard = false;
+            console.log(err);
+            console.log("error");
+            this.snackBar.open("Connection Unsuccessful..!!" ,'', {
+              duration: 2000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'center'
+            });
+          // 
+          } else {
+            console.log(conn);
+
+            console.log("success");
+            this.snackBar.open("Connection Successful.." ,"", {
+              duration:2000,
+            });
+            ConnectComponent.isValidCard = true;
+          }
+        });
+    }
     else
     {
       console.log(formData.value.username);
-    this.mysqlConnectionService.establishConnection(formData.value);
-    this.mysqlConnectionService.get((err,conn) => {
-      if(err)
-      {
+      this.mysqlConnectionService.establishConnection(formData.value);
+      this.mysqlConnectionService.get((err,conn) => {
+      if(err){
         ConnectComponent.isValidCard = false;
         console.log(err);
         console.log("error");
@@ -81,15 +105,12 @@ export class ConnectComponent{
           horizontalPosition: 'center'
         });
        // 
-      }
-      else
-      {
+      } else {
          console.log("success");
          this.snackBar.open("Connection Successful.." ,"", {
            duration:2000,
          });
          ConnectComponent.isValidCard = true;
-        // formData.reset();
       }
     });
   }

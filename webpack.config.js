@@ -527,6 +527,9 @@ module.exports = {
     "fast": "require('fast-csv')",
     "jsonsql": "require('json-sql')",
     "graph": "require('chart-csv')",
-    "dl": "require('datalib')"
+    "dl": "require('datalib')",
+    "teradata":  "require('node-teradata')",
+    "java":  "require('java')",
+    "winston":  "require('winston')"
  }
 };
