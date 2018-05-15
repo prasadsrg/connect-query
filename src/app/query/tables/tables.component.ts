@@ -19,7 +19,7 @@ export class TablesComponent implements OnInit{
   ngOnInit(){
   }
   getTables(){
-    this.query_service.getTables((data) =>{
+    this.query_service.getTables((err, data) =>{
       //console.log(data);
       this.tables = [];
       data.forEach(element => {

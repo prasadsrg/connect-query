@@ -5,11 +5,11 @@ import * as teradata from 'node-teradata';
 export class TeradataConnectionService {
   private config;
   constructor() {
-    let database_card: any = sessionStorage.getItem('cq_current');
-    console.log(database_card);
-    if(database_card) {
-      this.establishConnection(JSON.parse(database_card));
-    }
+    // let database_card: any = sessionStorage.getItem('cq_current');
+    // console.log(database_card);
+    // if(database_card) {
+    //   this.establishConnection(JSON.parse(database_card));
+    // }
    }
   establishConnection(database_card:any) {
     //console.log(database_card);
@@ -43,7 +43,6 @@ export class TeradataConnectionService {
   get(callback: any){
     console.log(this.config);
     let td = new teradata(this.config);
-
     callback(null, td);
   }
 }

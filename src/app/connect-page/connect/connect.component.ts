@@ -1,7 +1,6 @@
 import { Component,Inject, Output } from '@angular/core';
 import { ConnectPageService } from './connect-page.service';
-import { MysqlConnectionService } from '../../common/mysql-connection.service';
-import { TeradataConnectionService } from '../../common/teradata-connection.service';
+import { ConnectionService } from '../../common/connection.service';
 
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -21,8 +20,8 @@ export class ConnectComponent{
   public static database_card: any;
   public static isValidCard : any = false;
   database_type:any;
-  constructor(private connect_service : ConnectPageService, private mysqlConnectionService: MysqlConnectionService, private router: Router, 
-    public snackBar: MatSnackBar, public dialog:MatDialog, private teradataConnectionService:TeradataConnectionService){ 
+  constructor(private connect_service : ConnectPageService, private connectionService: ConnectionService, private router: Router, 
+    public snackBar: MatSnackBar, public dialog:MatDialog){ 
     this.databases = this.connect_service.databases;
     this.connections = this.connect_service.ReadFromJSONFile();
     this.connections = JSON.parse(this.connections);
@@ -54,7 +53,7 @@ export class ConnectComponent{
       ConnectComponent.database_card = database_card;
       //console.log('hi');
       this.connect_service.setCard(database_card);
-      this.mysqlConnectionService.establishConnection(database_card);
+      this.connectionService.establishConnection(database_card);
       this.router.navigate(['layout']);
   }
   getCard(){
@@ -67,8 +66,8 @@ export class ConnectComponent{
     this.database_type = formData.value.type;
     if(this.database_type === 'Teradata'){
           console.log(formData.value.username);
-          this.teradataConnectionService.establishConnection(formData.value);
-          this.teradataConnectionService.get((err,conn) => {
+          this.connectionService.establishConnection(formData.value);
+          this.connectionService.get((err,conn) => {
           if(err){
             ConnectComponent.isValidCard = false;
             console.log(err);
@@ -93,8 +92,8 @@ export class ConnectComponent{
     else
     {
       console.log(formData.value.username);
-      this.mysqlConnectionService.establishConnection(formData.value);
-      this.mysqlConnectionService.get((err,conn) => {
+      this.connectionService.establishConnection(formData.value);
+      this.connectionService.get((err,conn) => {
       if(err){
         ConnectComponent.isValidCard = false;
         console.log(err);
