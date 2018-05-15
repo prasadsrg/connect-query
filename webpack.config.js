@@ -516,6 +516,17 @@ module.exports = {
     "fs": "require('fs')",
     "path": "require('path')",
     "net": "require('net')",
-    "mysql": "require('mysql')"
+    "mysql": "require('mysql')",
+    "Draggable": "require('Draggable')",
+    "ace": "require('ace-code-editor')",
+    "fdiag": "require('save-file')",
+    "jsonexport": "require('jsonexport')",
+    "dialog": "require('open-file-dialog')",
+    "csv": "require('csv')",
+    "csv2sql-stream": "require('csv2sql-stream')",
+    "fast": "require('fast-csv')",
+    "jsonsql": "require('json-sql')",
+    "graph": "require('chart-csv')",
+    "dl": "require('datalib')"
  }
 };

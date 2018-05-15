@@ -1,0 +1,103 @@
+<h3 mat-dialog-title>Table Data Summary</h3>
+<div mat-dialog-content>
+<table mat-table>
+  <tr>
+    <th>Column</th>
+    <th>Count</th>
+    <th>Distinct</th>
+    <th>Max</th>
+    <th>Min</th>
+    <th>Mean</th>
+    <th>Median</th>
+    <th>Missing</th>
+    <th>Q1</th>
+    <th>Q3</th>
+    <th>Standard_deviation</th>
+  </tr>
+  <tr *ngFor = "let row of dataSummary">
+    <td>{{row.field}}</td>
+    <td>{{row.count}}</td>
+    <td>{{row.distinct}}</td>
+    <td>{{row.max}}</td>
+    <td>{{row.min}}</td>
+    <td>{{row.mean}}</td>
+    <td>{{row.median}}</td>
+    <td>{{row.missing}}</td>
+    <td>{{row.q1}}</td>
+    <td>{{row.q3}}</td>
+    <td>{{row.stdev}}</td>
+  </tr>
+</table>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color = "disabled" (click) = "onNoClick()">Close</button>
+</div>
+<!-- <table mat-table #table [dataSource]="dataSummary">
+
+    
+    <ng-container matColumnDef="Column">
+      <th mat-header-cell *matHeaderCellDef> Column </th>
+      <td mat-cell *matCellDef="let element"> {{element.field}} </td>
+    </ng-container>
+
+    
+    <ng-container matColumnDef="Count">
+      <th mat-header-cell *matHeaderCellDef> Count </th>
+      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+
+    
+    <ng-container matColumnDef="Distinct">
+      <th mat-header-cell *matHeaderCellDef> Distinct </th>
+      <td mat-cell *matCellDef="let element"> {{element.distinct}} </td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="Max">
+      <th mat-header-cell *matHeaderCellDef> Max </th>
+      <td mat-cell *matCellDef="let element"> {{element.max}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Min">
+        <th mat-header-cell *matHeaderCellDef> Min </th>
+        <td mat-cell *matCellDef="let element"> {{element.min}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Mean">
+          <th mat-header-cell *matHeaderCellDef> Mean </th>
+          <td mat-cell *matCellDef="let element"> {{element.mean}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Median">
+          <th mat-header-cell *matHeaderCellDef> Median </th>
+          <td mat-cell *matCellDef="let element"> {{element.median}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Missing">
+          <th mat-header-cell *matHeaderCellDef> Missing </th>
+          <td mat-cell *matCellDef="let element"> {{element.missing}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Modeskew">
+          <th mat-header-cell *matHeaderCellDef> Modeskew </th>
+          <td mat-cell *matCellDef="let element"> {{element.modeskew}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Q1">
+          <th mat-header-cell *matHeaderCellDef> Q1 </th>
+          <td mat-cell *matCellDef="let element"> {{element.q1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Q3">
+          <th mat-header-cell *matHeaderCellDef> Q3 </th>
+          <td mat-cell *matCellDef="let element"> {{element.q3}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Standard Deviation">
+          <th mat-header-cell *matHeaderCellDef> Standard Deviation </th>
+          <td mat-cell *matCellDef="let element"> {{element.stdev}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->

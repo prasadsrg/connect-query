@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {ConnectPageModule} from './connect-page/connect-page.module'
 import {QueryModule} from './query/query.module'
 import {MysqlConnectionService} from './common/mysql-connection.service'
+import { FileUploadService } from './common/upload-file.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MysqlConnectionService} from './common/mysql-connection.service'
     ConnectPageModule,
     QueryModule
   ],
-  providers: [MysqlConnectionService],
+  providers: [MysqlConnectionService,FileUploadService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }

@@ -2,7 +2,7 @@
 
 <mat-sidenav-container class="main-container" fxFill>
   
-  <mat-sidenav #sidenav [mode] = "side" align="end" fxLayout="row wrap" style="background-color:orange; padding: 1rem; max-width:300px">
+  <mat-sidenav #sidenav [mode] = "side" align="end" fxLayout="row wrap" style="background-color:lightblue; padding: 1rem; max-width:345px">
     
     <h2>Database Information</h2><br>
 
@@ -12,14 +12,14 @@
           <div fxLayout="row wrap" fxLayoutGap="10px">
       <mat-form-field class="input-elements" fxFill>
 
-        <input matInput  name="name" ngModel>
+        <input matInput  name="name" ngModel required>
         <mat-placeholder>Name</mat-placeholder>
 
       </mat-form-field>
 
       <mat-form-field class="input-elements" fxFill>
         <mat-placeholder>Database Type</mat-placeholder>
-        <mat-select  name="type" ngModel>
+        <mat-select  name="type" ngModel required>
           <mat-option 
             *ngFor = "let database of databases" 
             [value]="database">
@@ -35,7 +35,7 @@
 
   <mat-form-field class="input-elements" fxFill> 
                         
-    <input matInput placeholder="Host" class = "form-control" name="host" ngModel>
+    <input matInput placeholder="Host" class = "form-control" name="host" ngModel required>
       
   </mat-form-field>
 
@@ -47,23 +47,24 @@
 
   <mat-form-field class="input-elements" fxFill>
           
-      <input matInput placeholder="Username" class = "form-control" name="username" ngModel>
+      <input matInput placeholder="Username" class = "form-control" name = "username" ngModel required >
             
   </mat-form-field>
   <mat-form-field class="input-elements" fxFill>
           
-      <input matInput placeholder="Passwword" class = "form-control" name="password" ngModel>
+      <input matInput type = "password" placeholder="Passwword" class = "form-control" name="password" ngModel required>
                 
   </mat-form-field>
 
   <mat-form-field class="input-elements" fxFill>
           
-      <input matInput placeholder="Schema" class = "form-control" name="schema" ngModel>
+      <input matInput placeholder="Schema" class = "form-control" name="schema" ngModel required>
             
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="onSubmit(userForm.value)">Submit</button>
-  <button mat-raised-button (click) = "sidenav.toggle()" color="warn">Clear</button>
+  <button mat-raised-button color = "primary" (click)="onSubmit(userForm,sidenav)"><mat-icon class = "bton">done</mat-icon>Submit</button>
+  <button mat-raised-button color = "accent" (click) = "testConnection(userForm,sidenav)"><mat-icon class = "button">cloud_upload</mat-icon>Test</button>
+  <button mat-raised-button (click) = "resetForm(userForm)" (click) = "sidenav.toggle()" color="warn"><mat-icon class = "button">cancel</mat-icon>Clear</button>
   </div>
   
 </form>
@@ -73,9 +74,12 @@
   <div  fxLayout="row wrap" >
     <ng-template let-connection ngFor  [ngForOf]="connections">
       <mat-card class = "database-card" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="25" fxFlex.lg="20" fxFlex.xl="16.333">
+        <mat-icon style="float:right; cursor:pointer;" (click) = "editCard(connection,sidenav)">edit</mat-icon>
         <h3>{{connection.name}}</h3>
         <h4>{{connection.type}}</h4>
-        <mat-card-actions> <button mat-raised-button fxFill (click) = "createConnection(connection)">connect</button> </mat-card-actions>
+        <mat-card-footer>
+        <button mat-raised-button fxFill (click) = "createConnection(connection)"><mat-icon>wifi</mat-icon>connect</button>
+        </mat-card-footer>
       </mat-card>
     </ng-template>
   </div>

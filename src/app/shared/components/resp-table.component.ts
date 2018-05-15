@@ -44,11 +44,10 @@ export class RespTableComponent implements OnChanges {
 
 
   constructor(){
-
   }
   
   ngOnChanges(changes: SimpleChanges) {
-      console.log(this.dataList)
+      //console.log(this.dataList)
     const dataList = (changes as any).dataList || [];
     if ((changes as any).dataList != undefined && (dataList.previousValue != dataList.currentValue)) {
       this.dataList = dataList.currentValue;

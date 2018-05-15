@@ -20,7 +20,7 @@ export class QueryService {
               if(err)  throw err;
               callback(JSON.parse(JSON.stringify(rows))) 
       });
-      console.log(query.sql);
+      //console.log(query.sql);
     });
    }
 
@@ -28,11 +28,21 @@ export class QueryService {
     this.mysqlConnectionService.get( (err, conn) =>{
         if(err) throw err;
         var query= conn.query(queryText, (err, rows, fields) => {
-                if(err)  throw err;
+                if(err)  callback(JSON.parse(JSON.stringify(err)),"error");
                 callback(JSON.parse(JSON.stringify(rows)), fields) 
         });
-        console.log(query.sql);
+        //console.log(query.sql);
       });
+   }
+   getTableInfo(table_name,callback){
+        this.mysqlConnectionService.get( (err, conn) =>{
+                if(err) throw err;
+                var query= conn.query("describe "+table_name, (err, rows, fields) => {
+                        if(err)  throw err;
+                        callback(JSON.parse(JSON.stringify(rows)), fields) 
+                });
+                //console.log(query.sql);
+              });
    }
 
 }

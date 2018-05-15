@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Server Information {{data.content.name}}</h1>
+<form mat-dialog-content #userForm = "ngForm">
+    <div fxLayout="row wrap" fxLayoutGap="10px">
+        <mat-form-field class="input-elements" fxFill>
+  
+          <input matInput name="name" [(ngModel)] = "data.content.name" required>
+          <mat-placeholder>Name</mat-placeholder>
+  
+        </mat-form-field>
+  
+        <mat-form-field class="input-elements" fxFill>
+          <mat-placeholder>Database Type</mat-placeholder>
+          <mat-select  name="type" ngModel required>
+            <mat-option 
+              *ngFor = "let database of databases" 
+              [value]="database">
+              {{database}}
+            </mat-option>
+          </mat-select>
+  
+    </mat-form-field>
+  
+    <div>
+        <label >Server Address</label>
+    </div>
+  
+    <mat-form-field class="input-elements" fxFill> 
+                          
+      <input matInput placeholder="Host" [(ngModel)] = "data.content.host" class = "form-control" name="host" required>
+        
+    </mat-form-field>
+  
+    <mat-form-field class="input-elements" fxFill>
+            
+        <input matInput placeholder="Port" [(ngModel)] = "data.content.port" class = "form-control" name="port">
+              
+    </mat-form-field>
+  
+    <mat-form-field class="input-elements" fxFill>
+            
+        <input matInput placeholder="Username" [(ngModel)] = "data.content.username" class = "form-control" name = "username" required >
+              
+    </mat-form-field>
+    <mat-form-field class="input-elements" fxFill>
+            
+        <input matInput type = "password" placeholder="Passwword" [(ngModel)] = "data.content.password" class = "form-control" name="password" required>
+                  
+    </mat-form-field>
+  
+    <mat-form-field class="input-elements" fxFill>
+            
+        <input matInput placeholder="Schema" [(ngModel)] = "data.content.schema" class = "form-control" name="schema" required>
+              
+    </mat-form-field>
+  
+    <button style="background-color:gainsboro" mat-raised-button (click)="onSubmit(userForm,sidenav)"><mat-icon color = "primary">save</mat-icon>Save</button>
+    <button style="background-color:gainsboro" mat-raised-button (click) = "testConnection(userForm,sidenav)"><mat-icon color = "accent">cloud_upload</mat-icon>Test</button>
+    <button style="background-color:gainsboro" mat-raised-button (click) = "onNoClick()" ><mat-icon color="warn">cancel</mat-icon>Clear</button>
+    <button style="background-color:gainsboro" mat-raised-button (click) = "deleteCard(userForm.value)"><mat-icon color = "disabled">delete</mat-icon>Delete</button>
+    </div>
+</form>

@@ -1,0 +1,22 @@
+table {
+    border:1px solid #000;
+    border-collapse: collapse;
+    display:flex;
+}
+table th{
+    border-left:1px solid #000;
+    border-right: 1px solid #000;
+}
+table td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-block-start: 1px solid #000;
+}
+
+table td:first-child {
+    border-left: none;
+}
+
+table td:last-child {
+    border-right: none;
+}

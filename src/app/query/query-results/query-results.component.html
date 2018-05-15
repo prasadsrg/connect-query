@@ -1,3 +1,7 @@
-<p>
+<div>
+ <div *ngIf = "error_visible" style="border:1px solid #ccc;border-collapse:collapse;margin:0;padding:0;background-color:salmon">{{error.code}}:{{error.sqlMessage}}</div>
+ <div *ngIf = "insert_query" style="border:1px solid #ccc;border-collapse:collapse;margin:0;padding:0;background-color:palegreen">Query Seccessfully Executed..!!</div>
  <resp-table [dataColumns]="dataColumns" [dataList]="dataList"></resp-table>
-</p>
+ <!-- <app-query-layout [dataColumns] = "dataColumns"></app-query-layout> -->
+ 
+</div>

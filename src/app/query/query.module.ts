@@ -11,9 +11,20 @@ import { QueryService } from './query.service';
 import { InfiniteListComponent} from '../shared/components/infinite-list.component';
 import { RespTableComponent } from '../shared/components/resp-table.component';
 import { MatModule } from '../mat.module';
+import { DndModule } from 'ng2-dnd';
 import { Routes, RouterModule } from '@angular/router';
+import { ExportFileComponent } from './export-file/export-file.component';
+import { AceEditorModule } from 'ng2-ace-editor';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { ConnectPageService } from '../connect-page/connect/connect-page.service';
+import { FileUploadService } from '../common/upload-file.service';
+import { DataSummaryComponent } from './data-summary/data-summary.component';
+
+// import { MonacoEditorModule } from 'ngx-monaco-editor';
 const routes: Routes = [
-  { path: 'layout', component: QueryLayoutComponent}
+  { path: 'layout', component: QueryLayoutComponent},
+  { path: 'generate', component: UploadFileComponent},
+  { path: '', component: DataSummaryComponent}
 
 ];
 
@@ -21,13 +32,16 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes, { useHash: true }),
-    MatModule
+    MatModule,
+    DndModule.forRoot(),
+    AceEditorModule
+    // MonacoEditorModule.forRoot()
   ],
 
-  providers:[QueryService],
+  providers:[QueryService, ConnectPageService, FileUploadService],
   exports: [RouterModule],
   declarations: [QueryLayoutComponent, TablesComponent, ViewsComponent,
      StoreProcedursComponent, QueryGridComponent, QueryInfoComponent, QueryResultsComponent,
-     InfiniteListComponent, RespTableComponent]
+     InfiniteListComponent, RespTableComponent, UploadFileComponent, ExportFileComponent, DataSummaryComponent]
 })
 export class QueryModule { }
