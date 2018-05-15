@@ -6,9 +6,6 @@ import * as csv2sql  from 'csv2sql-stream';
 import * as fs from 'fs';
 import { FileUploadService } from '../../common/upload-file.service';
 import { QueryService } from '../../query/query.service';
-import * as fast from 'fast-csv';
-import * as jsonsql from 'json-sql';
-import *as graph from 'chart-csv';
 
 @Component({
   selector: 'app-upload-file',
