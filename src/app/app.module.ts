@@ -12,6 +12,7 @@ import { ConnectionService} from './common/connection.service';
 import {MysqlConnectionService} from './common/mysql-connection.service';
 import { TeradataConnectionService } from './common/teradata-connection.service';
 import { FileUploadService } from './common/upload-file.service';
+import { TestConnectionService } from './common/test.connection.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { FileUploadService } from './common/upload-file.service';
     ConnectPageModule,
     QueryModule
   ],
-  providers: [MysqlConnectionService,FileUploadService, TeradataConnectionService, ConnectionService],
+  providers: [MysqlConnectionService,FileUploadService, TeradataConnectionService, ConnectionService, TestConnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

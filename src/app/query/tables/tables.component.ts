@@ -30,7 +30,7 @@ export class TablesComponent implements OnInit{
   }
   getTablesInfo(table){
     table.attrs = [];
-    this.query_service.getTableInfo(table.table_name,(rows,fields)=>{
+    this.query_service.getTableInfo(table,(fields,rows)=>{
       table.attrs = rows
       //this.tables_info.set(table_name,rows);
       //console.log(this.tables_info);

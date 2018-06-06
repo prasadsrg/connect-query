@@ -32,19 +32,21 @@ export class QueryResultsComponent implements OnChanges {
     //console.log(query);
     this.dataColumns = [];
     this.dataList = [];
-    this.queryService.executeQuery(query, (rows,fields) =>{
-      if(fields === undefined)
+    this.queryService.executeQuery(query, (fields,rows) =>{
+      if(fields === "error")
       {
-        this.error_visible = false;
-        this.insert_query = true;
-      }
-      else if(fields === "error")
-      {
+        console.log('1');
         this.error = rows;
         this.error_visible = true;
         this.insert_query = false;
         //document.getElementById("err").innerHTML = this.error;
         console.log(rows);
+      }
+      else if(fields === undefined)
+      {
+        console.log('2');
+        this.error_visible = false;
+        this.insert_query = true;
       }
       else
       {

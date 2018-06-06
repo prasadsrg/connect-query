@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditCardComponent } from '../../connect-page/edit-card/edit-card.component';
 import { EventEmitter } from '@angular/core';
+import { TestConnectionService } from '../../common/test.connection.service';
 
 @Component({
   selector: 'app-connect',
@@ -21,7 +22,7 @@ export class ConnectComponent{
   public static isValidCard : any = false;
   database_type:any;
   constructor(private connect_service : ConnectPageService, private connectionService: ConnectionService, private router: Router, 
-    public snackBar: MatSnackBar, public dialog:MatDialog){ 
+    public snackBar: MatSnackBar, public dialog:MatDialog, private testConnectionService: TestConnectionService){ 
     this.databases = this.connect_service.databases;
     this.connections = this.connect_service.ReadFromJSONFile();
     this.connections = JSON.parse(this.connections);
@@ -62,60 +63,15 @@ export class ConnectComponent{
   resetForm(formData){
     formData.reset();
   }
-  testConnection(formData,sidenav){
-    this.database_type = formData.value.type;
-    if(this.database_type === 'Teradata'){
-          console.log(formData.value.username);
-          this.connectionService.establishConnection(formData.value);
-          this.connectionService.get((err,conn) => {
-          if(err){
-            ConnectComponent.isValidCard = false;
-            console.log(err);
-            console.log("error");
-            this.snackBar.open("Connection Unsuccessful..!!" ,'', {
-              duration: 2000,
-              verticalPosition: 'bottom',
-              horizontalPosition: 'center'
-            });
-          // 
-          } else {
-            console.log(conn);
-
-            console.log("success");
-            this.snackBar.open("Connection Successful.." ,"", {
-              duration:2000,
-            });
-            ConnectComponent.isValidCard = true;
-          }
-        });
-    }
-    else
-    {
-      console.log(formData.value.username);
-      this.connectionService.establishConnection(formData.value);
-      this.connectionService.get((err,conn) => {
-      if(err){
-        ConnectComponent.isValidCard = false;
-        console.log(err);
-        console.log("error");
-        this.snackBar.open("Connection Unsuccessful..!!" ,'', {
-          duration: 2000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center'
-        });
-       // 
-      } else {
-         console.log("success");
-         this.snackBar.open("Connection Successful.." ,"", {
-           duration:2000,
-         });
-         ConnectComponent.isValidCard = true;
-      }
-    });
-  }
+  testConnection(formData){
+    let isValid;
+    this.testConnectionService.testConnection(formData,isValid =>{
+    if(isValid === true)
+    ConnectComponent.isValidCard = true;
+  });
     //sidenav.toggle();
   }
-  editCard(formData,sidenav){
+  editCard(formData){
     //sidenav.toggle();
     console.log(formData);
     let dialogRef = this.dialog.open(EditCardComponent,{
