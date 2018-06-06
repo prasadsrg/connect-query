@@ -53,8 +53,8 @@
               
     </mat-form-field>
   
-    <button style="background-color:gainsboro" mat-raised-button (click)="onSubmit(userForm,sidenav)"><mat-icon color = "primary">save</mat-icon>Save</button>
-    <button style="background-color:gainsboro" mat-raised-button (click) = "testConnection(userForm,sidenav)"><mat-icon color = "accent">cloud_upload</mat-icon>Test</button>
+    <button style="background-color:gainsboro" mat-raised-button (click)="onSubmit(userForm)"><mat-icon color = "primary">save</mat-icon>Save</button>
+    <button style="background-color:gainsboro" mat-raised-button (click) = "testConn(userForm)"><mat-icon color = "accent">cloud_upload</mat-icon>Test</button>
     <button style="background-color:gainsboro" mat-raised-button (click) = "onNoClick()" ><mat-icon color="warn">cancel</mat-icon>Clear</button>
     <button style="background-color:gainsboro" mat-raised-button (click) = "deleteCard(userForm.value)"><mat-icon color = "disabled">delete</mat-icon>Delete</button>
     </div>

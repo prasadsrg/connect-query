@@ -4,7 +4,6 @@
         <button mat-raised-button (click) = "switchToUploadFile()" style="width: 100%; margin-top:10px;"  color="primary">Smart Upload</button>
     </div>
     
-    <mat-accordion>
         <mat-expansion-panel  color="primary" (opened) ="getTables()">
             <mat-expansion-panel-header >
              <mat-panel-title>
@@ -15,7 +14,6 @@
             </mat-panel-description>   
             </mat-expansion-panel-header>
             <div *ngFor = "let table of tables">
-                    <mat-accordion >
                             <mat-expansion-panel (opened) = "getTablesInfo(table)">
                                     <mat-expansion-panel-header dnd-draggable [dragEnabled]="true" [dragData]="table.table_name">
                                         {{table.table_name}}      
@@ -27,11 +25,9 @@
                                             </mat-list-item>
                                           </mat-list>
                             </mat-expansion-panel>
-                    </mat-accordion>
              
             </div>
           </mat-expansion-panel>
-    </mat-accordion>
 
      
 

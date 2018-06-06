@@ -14,6 +14,7 @@ export class ConnectionService {
         if (database_card) {
             this.establishConnection(JSON.parse(database_card));
         }
+        //this.connType = database_card.type;
     }
     establishConnection(database_card: any) {
         //console.log(database_card);
@@ -38,12 +39,19 @@ export class ConnectionService {
 
     query(query: String, callback) {
         query = query.trim();
-        console.log(query);
-        let isSelect = query.indexOf('select') == 0 ? true :  false;
+        //console.log(query);
+        //let isSelect = query.indexOf('select') == 0 ? true :  false;
         if (this.connType == 'Mysql') {
             this.get((err, conn) => {
                 if(err) throw err;
-                conn.query(query, callback);
+                conn.query(query, (err,rows,fields)=>{
+                    if(err){
+                    callback("error",JSON.parse(JSON.stringify(err)));
+                    }
+                    else{
+                    callback(fields,rows);
+                    }
+                });
             });
         } else if (this.connType == 'Teradata') {
             this.get((err, conn) => {

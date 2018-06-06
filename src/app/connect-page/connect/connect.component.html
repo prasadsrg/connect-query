@@ -63,7 +63,7 @@
   </mat-form-field>
 
   <button mat-raised-button color = "primary" (click)="onSubmit(userForm,sidenav)"><mat-icon class = "bton">done</mat-icon>Submit</button>
-  <button mat-raised-button color = "accent" (click) = "testConnection(userForm,sidenav)"><mat-icon class = "button">cloud_upload</mat-icon>Test</button>
+  <button mat-raised-button color = "accent" (click) = "testConnection(userForm)"><mat-icon class = "button">cloud_upload</mat-icon>Test</button>
   <button mat-raised-button (click) = "resetForm(userForm)" (click) = "sidenav.toggle()" color="warn"><mat-icon class = "button">cancel</mat-icon>Clear</button>
   </div>
   
@@ -74,7 +74,7 @@
   <div  fxLayout="row wrap" >
     <ng-template let-connection ngFor  [ngForOf]="connections">
       <mat-card class = "database-card" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="25" fxFlex.lg="20" fxFlex.xl="16.333">
-        <mat-icon style="float:right; cursor:pointer;" (click) = "editCard(connection,sidenav)">edit</mat-icon>
+        <mat-icon style="float:right; cursor:pointer;" (click) = "editCard(connection)">edit</mat-icon>
         <h3>{{connection.name}}</h3>
         <h4>{{connection.type}}</h4>
         <mat-card-footer>

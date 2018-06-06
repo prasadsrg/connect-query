@@ -52,6 +52,7 @@ ngAfterViewInit() {
     this.outputEvent.emit(this.queryText);
   }
   tableDataSuccess($event:any){
+    console.log($event);
     if(this.tablePart === null)
     this.tablePart = " from "+JSON.parse(JSON.stringify($event)).dragData;
     else
